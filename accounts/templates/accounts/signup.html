@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+    {% block content %}
+    <div class="container">
+      
+        <br>
+        <br>
+    <h2>SignUp</h2>
+      <form method="POST" action="{% url 'signup' %}">
+          {% csrf_token %}
+          <p class="text-danger">{{ error }}</p>
+<div class="form-row">
+    <div class="col-md-6 ">
+    <div class="form-group">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="username" required>
+    </div>
+    </div>
+    <div class="col-md-6 ">
+  <div class="form-group">
+    <label for="inputState">Blood Group</label>
+      <select id="inputState" class="form-control" name="blood">
+        <option value="Select">-----Select-----</option>
+	<option value="A+">A+</option>
+	<option value="A-">A-</option>
+	<option value="A1+">A1+</option>
+	<option value="A1-">A1-</option>
+	<option value="A1B+">A1B+</option>
+	<option value="A1B-">A1B-</option>
+	<option value="A2+">A2+</option>
+	<option value="A2-">A2-</option>
+	<option value="A2B+">A2B+</option>
+	<option value="A2B-">A2B-</option>
+	<option value="AB+">AB+</option>
+	<option value="AB-">AB-</option>
+	<option value="B+">B+</option>
+	<option value="B-">B-</option>
+	<option value="Bombay Blood Group">Bombay Blood Group</option>
+	<option value="INRA">INRA</option>
+	<option value="O+">O+</option>
+	<option value="O-">O-</option>
+      </select>
+  </div>
+  </div>
+  </div>
+  
+  <div class="form-row">
+    <div class="col-md-5 ">
+  <div class="form-group">
+    <label for="inputAddress">First Name</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="First Name" name="first_name" required>
+  </div>
+  </div>
+   <div class="col-md-5 ">
+  <div class="form-group">
+    <label for="inputAddress">Last Name</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="Last Name" name="last_name" required>
+  </div>
+   </div>
+  <div class="col-md-2 ">
+    <div class="form-group">
+      <label for="inputAddress">BirthDate</label>
+      <input type="number" class="form-control" id="inputAddress" placeholder="DDMMYYYY" name="birth" required>
+    </div>
+   </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-6 ">
+  <div class="form-group">
+    <label for="inputAddress">Mobile No.</label>
+    <input type="number" class="form-control" id="inputAddress" placeholder="Mobile Number" name="mobile" required>
+  </div>
+  </div>
+   <div class="col-md-6 ">
+  <div class="form-group">
+    <label for="inputAddress">Other Mobile No. (optional)</label>
+    <input type="number" class="form-control" id="inputAddress" placeholder="Other Mobile" name="mobile_other" >
+  </div>
+   </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address" required>
+ 
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+    
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity" name="city" required>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control" name="state">
+        <option selected>Choose...</option>
+        <option>Gorakhpur</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip" name="zipcode" required>
+    </div>
+  </div>
+    <div class="form-row">
+    <div class="col-md-6 ">
+    <div class="form-group">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="pswd1" required>
+    </div>
+    </div>
+    <div class="col-md-6 ">
+    <div class="form-group">
+      <label for="inputPassword4">Re-Password</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder=" Retype Password" name="pswd2" required>
+    </div>
+  </div>
+  </div>
+
+  <label for="inputState">Please confirm your availability to donate blood</label>
+      <select id="inputState" class="form-control">
+        
+        <option selected="selected" value="A">Available</option>
+	<option value="U">UnAvailable</option>
+      </select>
+  
+  <button type="submit" class="btn btn-primary mt-3">Sign in</button>
+      </form>
+    
+    </div>
+    {% endblock %}

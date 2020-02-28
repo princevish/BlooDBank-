@@ -1,0 +1,224 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>{% block top_title %}{% endblock %}</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "home/css/bootstrap.min.css" %}" rel="stylesheet" >
+    <link href="{% static "home/footer.css" %}" rel="stylesheet" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+     {% block login_style %}
+
+      {% endblock %}
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{%  static "home/css/carousel.css"%}" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+  <!--Navbar -->
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">Blood</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+    aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url  'home' %}">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'blood' %}">Find Blood</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'bloodbank1' %}">BloodBank</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'bloodrequest' %}">Blood Request</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'event' %}">Event</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">About</a>
+        </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'contactuser' %}">Contact</a>
+      </li>
+      
+      <!--
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">More
+        </a>
+        <div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-555">
+          <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+          <a class="dropdown-item" href="{% url 'blood' %}">Find Blood</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>-->
+    </ul>
+    
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+        {% if user.is_authenticated %}
+    
+      <li class="nav-item avatar dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <img src="{{pf.pic.url}}" class="rounded-circle z-depth-0" width="30px" height="30px"
+            alt="Profile image">
+           {{pf.user.first_name}} {{pf.user.last_name}}
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+          aria-labelledby="navbarDropdownMenuLink-55">
+          <a class="dropdown-item" href="{% url  'profile' %}">Profile</a>
+          <a class="dropdown-item" href="{% url  'profileupdate' %}">Profile Update</a>
+          
+          <a class="dropdown-item" href="{% url  'logout' %}">Logout</a>
+        </div>
+      </li>
+      {% else %}
+      <li class="nav-item">
+          <a class="nav-link" href="{% url  'login' %}">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url  'signup' %}">Signup</a>
+          </li>
+          {% endif %}
+    </ul>
+   
+  </div>
+</nav>
+<!--/.Navbar -->
+<br>
+
+</header>
+{% block content %}
+
+
+{% endblock %}
+
+
+  <!-- FOOTER -->
+  <!--footer starts from here-->
+<footer class="footer">
+    <div class="container bottom_border">
+    <div class="row">
+    <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+    <h5 class="headin5_amrc col_white_amrc pt2">About us</h5>
+    <!--headin5_amrc-->
+    <p class="mb10">Blood Donation is online system that provide free service to patient.On this platform we provide all type of blood group.patient can easily get blood group.</p>
+    <p><i class="fa fa-location-arrow"></i> 9878/25 sec 9 rohini 35 </p>
+    <p><i class="fa fa-phone"></i>  +91-9999878398  </p>
+    <p><i class="fa fa fa-envelope"></i> info@example.com  </p>
+    
+    
+    </div>
+    
+    
+    <div class=" col-sm-4 col-md  col-6 col">
+    <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+    <!--headin5_amrc-->
+    <ul class="footer_ul_amrc">
+    <li><a href="#">Image Rectoucing</a></li>
+    <li><a href="#">Clipping Path</a></li>
+    <li><a href="#">Hollow Man Montage</a></li>
+    <li><a href="#">Ebay & Amazon</a></li>
+    <li><a href="#">Hair Masking/Clipping</a></li>
+    <li><a href="#">Image Cropping</a></li>
+    </ul>
+    <!--footer_ul_amrc ends here-->
+    </div>
+    
+    
+    <div class=" col-sm-4 col-md  col-6 col">
+    <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+    <!--headin5_amrc-->
+    <ul class="footer_ul_amrc">
+    <li><a href="#">Remove Background</a></li>
+    <li><a href="#">Shadows & Mirror Reflection</a></li>
+    <li><a href="#">Logo Design</a></li>
+    <li><a href="#">Vectorization</a></li>
+    <li><a href="#">Hair Masking/Clipping</a></li>
+    <li><a href="#">Image Cropping</a></li>
+    </ul>
+    <!--footer_ul_amrc ends here-->
+    </div>
+    
+    
+    <div class=" col-sm-4 col-md  col-12 col">
+    <h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
+    <!--headin5_amrc ends here-->
+    
+    <ul class="footer_ul2_amrc">
+    <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p></li>
+    <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p></li>
+    <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p></li>
+    </ul>
+    <!--footer_ul2_amrc ends here-->
+    </div>
+    </div>
+    </div>
+    
+    
+    <div class="container">
+    <ul class="foote_bottom_ul_amrc">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'event' %}">Event</a></li>
+
+    <li><a href="{% url 'contactuser' %}">Contact</a></li>
+    </ul>
+    <!--foote_bottom_ul_amrc ends here-->
+    <p class="text-center">Copyright @{% now 'Y' %} | Designed With by <a href="#">Prince Vishwakarma</a></p>
+    <!--
+    <ul class="social_footer_ul">
+    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+    </ul>
+    -->
+    <!--social_footer_ul ends here-->
+    </div>
+    
+    </footer>
+</body>
+<script src="{% static "home/js/jquery-3.3.1.slim.min.js" %}" ></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="{% static "home/js/bootstrap.bundle.min.js" %}" ></script>
+  {% block login_js%}
+
+  {% endblock %}
+  </body>
+</html>

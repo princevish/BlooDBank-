@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block top_title %}Blog....{% endblock %}
+{% block login_style %}
+
+
+{% endblock %}
+{% block content %}
+<div class="container p-4">
+<div class="container marketing m-5">
+
+        <!-- Three columns of text below the carousel -->
+
+        <!-- START THE FEATURETTES -->
+    <h1 class="text-center mb-3">EVENT</h1>
+    <hr class="featurette-divider">
+    {% for data in blogs%}
+    
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">{{data.title}}</h2>
+
+            <p class="lead">{{data.date}}  {{data.summry}}</p>
+          </div>
+          <div class="col-md-5">
+              <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{{data.pic.url}}" alt="First slide" style="width: 100%;" >
+              <!--<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+         --> </div>
+        </div>
+    
+        <hr class="featurette-divider">
+    
+
+    {% endfor %}
+
+        
+    
+    
+    
+        <!-- /END THE FEATURETTES -->
+    
+      </div><!-- /.container -->
+</div>
+{% endblock%}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block top_title %}Profile....{% endblock %}
+{% block content %}
+<div  class="container p-4">
+<div class="card p-5">
+<div class="text-center"> 
+<h2>Report Blood Donor</h2>
+<div class="table-responsive mb-5">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile</th>
+    
+    </tr>
+    </thead>
+    <tbody>
+  
+    <tr>
+      <td>{{userreport.user.first_name}} {{userreport.user.last_name}}</td>
+      
+      <td>{{userreport.user.email}}</td>
+     
+      <td>{{userreport.mobile}}</td>
+      
+     
+    </tr>			
+  
+    </tbody>
+  </table>
+  </div>
+
+<form method="POST" action="{% url 'report' userreport.id %}"> 
+    {% csrf_token %}
+
+
+    <div class="form-group col">
+    
+    
+ <select id="inputdistrict" class="form-control" name="reason" required>
+      <option value="" disabled selected>---Reason---</option>
+      <option value="Wrong Number">Wrong Number</option>
+	<option value="Using someone else">Using someone else</option>
+	<option value="Donors location changed">Donors location changed</option>
+	<option value="Donated Recently">Donated Recently</option>
+	<option value="Can&#39;t donate anymore">Can&#39;t donate anymore</option>
+	<option value="Denied to donate">Denied to donate</option>
+
+    </select>
+  </div>
+
+<div class="form-group">
+  <label for="exampleFormControlTextarea1"><strong>Report information</strong> </label>
+  <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10" name="reportinfo"></textarea>
+</div>
+
+  <button type="submit" class="btn btn-primary p-2">Report</button>
+</form>
+</div>
+
+</div>
+
+
+
+
+
+</div>
+
+{% endblock %}

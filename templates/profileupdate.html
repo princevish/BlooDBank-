@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block top_title %}SignUp....{% endblock %}
+{% block login_style %}
+<link rel="stylesheet" href="{% static "signup\style.css" %}">
+
+{% endblock %}
+
+    {% block content %}
+    <div class="container">
+  
+       
+    <h2 class="mt-5">Profile Update</h2>
+      <form method="POST" action="{% url 'profileupdate' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <p class="text-danger">{{ error }}</p>
+<div class="form-row">
+    <div class="col ">
+    <div class="form-group">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" value="{{user.email}}" id="inputEmail4" placeholder="Email" name="email" required>
+    </div>
+    </div>
+   
+  </div>
+  
+  <div class="form-row">
+    <div class="col-md-5 ">
+  <div class="form-group">
+    <label for="inputAddress">First Name</label>
+    <input type="text" class="form-control" value="{{user.first_name}}" id="inputAddress" placeholder="First Name" name="first_name" required>
+  </div>
+  </div>
+   <div class="col-md-5 ">
+  <div class="form-group">
+    <label for="inputAddress">Last Name</label>
+    <input type="text" class="form-control" value="{{user.last_name}}" id="inputAddress" placeholder="Last Name" name="last_name" required>
+  </div>
+   </div>
+  <div class="col-md-2 ">
+    <div class="form-group">
+      <label for="example-date-input" class="col-form-lable">Date of Birth</label>
+      <input type="date" class="form-control" id="inputAddress" value="{{pf.birthdate}}" name="birth" required>
+    </div>
+   </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-6 ">
+  <div class="form-group">
+    <label for="inputAddress">Mobile No.</label>
+    <input type="number" class="form-control" size="10" id="inputAddress"  value="{{pf.mobile}}"  maxlength="10" placeholder="Mobile Number" name="mobile" required>
+  </div>
+  </div>
+   <div class="col-md-6 ">
+  <div class="form-group">
+    <label for="inputAddress">Other Mobile No. (optional)</label>
+    <input type="number" class="form-control" id="inputAddress"  maxlength="10"   value="{{pf.other_mobile}}" placeholder="Other Mobile" name="mobile_other" >
+  </div>
+   </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress"  value="{{pf.address}}" placeholder="1234 Main St" name="address" required>
+ 
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+    
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity"  value="{{pf.city}}" name="city" required>
+    </div>
+    <div class="form-group col-md-3">
+    
+      <label for="inputCity">District</label>
+      <select id="inputdistrict" class="form-control" name="district1"   id="child_selection" required>
+        <option value="{{pf.district}}" selected>{{pf.district}}</option>
+        <option value="Gorakhpur">Gorakhpur</option>
+        
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control" name="state"   id="parent_selection" required>
+        <option value="{{pf.state}}" selected>{{pf.state}}</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+<option value="Assam">Assam</option>
+<option value="Bihar">Bihar</option>
+<option value="Chhattisgarh">Chhattisgarh</option>
+<option value="Chandigarh">Chandigarh</option>
+<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+<option value="Daman and Diu">Daman and Diu</option>
+<option value="Delhi">Delhi</option>
+<option value="Goa">Goa</option>
+<option value="Gujarat">Gujarat</option>
+<option value="Haryana">Haryana</option>
+<option value="Himachal Pradesh">Himachal Pradesh</option>
+<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+<option value="Jharkhand">Jharkhand</option>
+<option value="Karnataka">Karnataka</option>
+<option value="Kerala">Kerala</option>
+<option value="Madhya Pradesh">Madhya Pradesh</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Manipur">Manipur</option>
+<option value="Meghalaya">Meghalaya</option>
+<option value="Mizoram">Mizoram</option>
+<option value="Nagaland">Nagaland</option>
+<option value="Orissa">Orissa</option>
+<option value="Punjab">Punjab</option>
+<option value="Pondicherry">Pondicherry</option>
+<option value="Rajasthan">Rajasthan</option>
+<option value="Sikkim">Sikkim</option>
+<option value="Tamil Nadu">Tamil Nadu</option>
+<option value="Tripura">Tripura</option>
+<option value="Uttar Pradesh">Uttar Pradesh</option>
+<option value="Uttarakhand">Uttarakhand</option>
+<option value="West Bengal">West Bengal</option>
+
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip"   value="{{pf.zipcode}}" maxlength="6" name="zipcode" min="000000" max="999999" required>
+    </div>
+  </div>
+    <div class="form-row">
+    <div class="col-md-6 ">
+    <div class="form-group">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="pswd1" required>
+    </div>
+    </div>
+    <div class="col-md-6 ">
+    <div class="form-group">
+      <label for="inputPassword4">Re-Password</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder=" Retype Password" name="pswd2" required>
+    </div>
+  </div>
+  </div>
+  <div class="form-row">
+      <div class="col-md-6 ">
+      <div class="form-group">
+  <label for="inputState">Please confirm your availability to donate blood</label>
+      <select id="inputState" class="form-control"   name="avilable" required>
+        
+        <option selected="selected" value="{{pf.avilable}}">{{pf.avilable}}</option>
+        
+        <option value="UnAvailable">UnAvailable</option>
+        <option value="Available">Available</option>
+        
+        
+      </select>
+      </div>
+      </div>   
+      <div class="col-md-6 ">
+        
+
+          <label>Upload Profile Image</label>
+        <div class="custom-file">
+          
+           
+            <input type="file" class="custom-file-input"  value="{{pf.pic}}" id="imgInp" name="propic"  required/>
+            <label class="custom-file-label">Choose Image</label>
+
+
+
+        </div>
+        </div>
+        <br>
+        <img id='img-upload' class="image-container"/>
+    </div>
+  
+  <button type="submit" class="btn btn-primary mt-3">Update</button>
+ 
+      </form>
+     <br>
+    </div>
+    {% endblock %}
+{% block login_js%}
+<script src="{% static "signup\script.js" %}"></script>
+<script language="javascript" type="text/javascript" src="{% static "state\javas.js" %}"></script>
+<script language="javascript" type="text/javascript" src="{% static "state\jquery.js" %}"></script>
+
+
+{% endblock %}

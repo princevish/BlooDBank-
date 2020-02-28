@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block top_title %}Profile....{% endblock %}
+{% block login_style %}
+<link rel="stylesheet" href="{% static "profile\style.css" %}">
+
+{% endblock %}
+    {% block content %}
+ 
+    <div class="container mt-5 p-4">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="card-title mb-4">
+                            <div class="d-flex justify-content-start">
+                                <div class="image-container">
+                                    <img src="{{pf.pic.url}}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                                   
+                                </div>
+                                <div class="userData ml-5">
+                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">{{user.first_name}} {{user.last_name}}</h2>
+                                   
+                                    <h6 class="d-block">Blood Group: <h3>{{pf.bloodgroup}}</h3></h6>
+                                    <h6 class="d-block"><span class="blinking">{{pf.avilable}}</span></h6>
+                                <form method="POST" action="{% url 'changeavailable' %}">
+                                        {% csrf_token %}
+                                        <div class="input-group">
+                                    <select id="inputdistrict" class="custom-select" name="available" >
+                                        <option value="Available" >Available</option>
+                                        <option value="UnAvailable">UnAvailable</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary ">set</button></div>
+                                </div>
+                            </form>        
+                                  
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">Connected Services</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content ml-1" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                                        
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Full Name:</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{user.first_name}} {{user.last_name}}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Email:</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{user.email}}
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Birth Date:</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                               {{pf.birthdate}}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Mobile No.</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{pf.mobile}}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Other Mobile No.</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{pf.other_mobile}}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Address:</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{pf.address}}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                           <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">City:</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{pf.city}}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">District:</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{pf.district}}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                     
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">State:</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{pf.state}}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Zip code:</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{pf.zipcode}}
+                                            </div>
+                                        </div>
+                                       
+
+                                    </div>
+                                    <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
+                                        Facebook, Google, Twitter Account that are connected to this account
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    {% block login_js%}
+    
+    {% endblock %}

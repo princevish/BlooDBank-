@@ -1,0 +1,201 @@
+    {% extends 'base.html' %}
+    {%load static%}
+    {% block top_title %}Blood Request....{% endblock %}
+    {% block login_style %}
+
+
+    {% endblock %}
+    {% block content %}
+    <div  class="container p-4 mt-5">
+
+      <div class="row">
+      <div class="col-md-6 offset-md-3">
+
+      <h3 class="text-center">Blood Request </h3>
+      <form method="POST" action="{% url 'bloodrequest' %}">
+          {% csrf_token %}
+        <br>
+        <div class="form-row">
+
+          <div class="form-group col">
+        <div class="form-group">
+        <label for="inputAddress">Name</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Name" name="name" required>
+      </div>
+          </div>
+
+                <div class="form-group col">
+            <label for="category">Blood</label>
+            <select id="inputState" class="form-control" name="blood" required>
+              <option value="" disabled selected>-----Select-----</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="A1+">A1+</option>
+              <option value="A1-">A1-</option>
+              <option value="A1B+">A1B+</option>
+              <option value="A1B-">A1B-</option>
+              <option value="A2+">A2+</option>
+              <option value="A2-">A2-</option>
+              <option value="A2B+">A2B+</option>
+              <option value="A2B-">A2B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+            </select>
+          </div>
+
+
+        </div>
+           <div class="form-row">
+
+          <div class="form-group col">
+
+          <div class="form-group">
+          <label for="inputEmail4">Email</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email" required>
+        </div>
+          </div>
+               <div class="form-group col ">
+      <div class="form-group">
+        <label for="inputAddress">Mobile No.</label>
+        <input type="number" class="form-control" size="10" id="inputAddress"  maxlength="10" placeholder="Mobile Number" name="mobile" required>
+      </div>
+      </div>
+
+
+           </div>
+
+          <div class="form-row">
+          <div class="form-group col">
+
+            <label for="inputCity">Address</label>
+            <input type="text" class="form-control" id="inputCity" name="address" >
+          </div>
+               <div class="form-group col">
+
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="inputCity" name="city" >
+          </div>
+          </div>
+
+
+        <div class="form-row">
+               <div class="form-group col">
+            <label for="inputCity">District</label>
+          <select id="inputdistrict" class="form-control" name="district" id="child_selection">
+            <option value=""  selected>-----Select-----</option>
+            <option value="Gorakhpur">Gorakhpur</option></select>
+          </div>
+
+          <div class="form-group col">
+            <label for="category">State</label>
+            <select id="inputState" class="form-control" name="state" id="parent_selection" required>
+              <option value=""  selected>-----Select-----</option>
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+    <option value="Assam">Assam</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Chhattisgarh">Chhattisgarh</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+    <option value="Daman and Diu">Daman and Diu</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Goa">Goa</option>
+    <option value="Gujarat">Gujarat</option>
+    <option value="Haryana">Haryana</option>
+    <option value="Himachal Pradesh">Himachal Pradesh</option>
+    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+    <option value="Jharkhand">Jharkhand</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Madhya Pradesh">Madhya Pradesh</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Manipur">Manipur</option>
+    <option value="Meghalaya">Meghalaya</option>
+    <option value="Mizoram">Mizoram</option>
+    <option value="Nagaland">Nagaland</option>
+    <option value="Orissa">Orissa</option>
+    <option value="Punjab">Punjab</option>
+    <option value="Pondicherry">Pondicherry</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Sikkim">Sikkim</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Tripura">Tripura</option>
+    <option value="Uttar Pradesh">Uttar Pradesh</option>
+    <option value="Uttarakhand">Uttarakhand</option>
+    <option value="West Bengal">West Bengal</option>
+
+            </select>
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="text-center">
+        <button type="submit" class="btn btn-primary mb-4 ">Submit</button>
+      </div>
+      </form>
+    </div>
+      </div>
+    </div>
+
+
+
+
+        <!--start table-->
+      <div class="table-responsive mb-5 p-4">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Blood</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">City</th>
+                    <th scope="col">District</th>
+                    <th scope="col">State</th>
+                </tr>
+              </thead>
+              <tbody>
+            {% for blooddoner in queryset %}
+                    <tr>
+                        <td>{{ blooddoner.name }} </td>
+                        <td>{{ blooddoner.bloodgroup }}</td>
+                        <td>{{ blooddoner.email }}</td>
+                        <td>{{ blooddoner.mobile }}</td>
+                        <td>{{ blooddoner.address }}</td>
+                        <td>{{ blooddoner.city }}</td>
+                        <td>{{ blooddoner.district }}</td>
+                        <td>{{ blooddoner.state }} </td>
+                    </tr>
+            {% endfor %}
+              </tbody>
+            </table>
+        </div>
+
+        <!--start end-->
+
+
+
+
+    </div>
+
+    {%endblock%}
+    {% block login_js%}
+
+    <script language="javascript" type="text/javascript" src="{% static "state\javas.js" %}"></script>
+    <script language="javascript" type="text/javascript" src="{% static "state\jquery.js" %}"></script>
+
+    {% endblock %}
